@@ -14,7 +14,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
         LoginPageComponent,
         DashboardPageComponent,
         CreatePageComponent,
-        EditPageComponent
+        EditPageComponent,
     ],
     imports:[
         CommonModule,
