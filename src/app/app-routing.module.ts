@@ -11,10 +11,11 @@ const routes: Routes = [
       {path: '', redirectTo: '/', pathMatch: 'full'},
       {path: '', component: HomePageComponent},
       {path: 'post/:id', component: PostPageComponent}
-    ]},
-    {
-      path: 'admin', loadChildren: './admin/admin.module#AdminModule'
-    }
+    ]
+  },
+  {
+    path: 'admin', loadChildren: './admin/admin.module#AdminModule'
+  }
 ];
 
 @NgModule({
