@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from '../shared/interfaces';
+import { Observable } from 'rxjs';
+import { PostsService } from '../shared/posts.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-page',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostPageComponent implements OnInit {
 
-  constructor() { }
+  post$: Observable<Post>
+
+  constructor(
+    private postsService: PostsService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+      this.post$ = this.route.params
+      .pipe(switchMap((params: Params) => {
+        return this.postsService.getById(params['id'])
+      }))
   }
 
 }
